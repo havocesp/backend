@@ -16,7 +16,7 @@ class Coinbase:
         self.ticks = self.get_ticks()
 
     def get_ticks(self):
-        r = requests.get('{}/{}'.format(rs_url, 'products'))
+        r = requests.get('{}/{}'.format(rs_url, 'products'), timeout=60)
         return [i['id'] for i in r.json()]
 
 
