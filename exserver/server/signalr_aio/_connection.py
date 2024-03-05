@@ -27,8 +27,7 @@ class Connection(object):
         
 
         async def handle_error(**data):
-            error = data["E"] if "E" in data else None
-            if error is not None:
+            if (error := data["E"] if "E" in data else None) is not None:
                 await self.error.fire(error)
 
         self.received += handle_error

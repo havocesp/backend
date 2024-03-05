@@ -88,8 +88,7 @@ class Transport:
     async def _producer_handler(self, ws):
         while True:
             try:
-                event = await self.invoke_queue.get()
-                if event is not None:
+                if (event := await self.invoke_queue.get()) is not None:
                     if event.type == 'INVOKE':
                         await ws.send(dumps(event.message))
                     elif event.type == 'CLOSE':
