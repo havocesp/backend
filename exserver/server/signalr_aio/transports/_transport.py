@@ -98,7 +98,6 @@ class Transport:
                             await asyncio.sleep(0.1)
                         else:
                             self._connection.started = False
-                            break
                 else:
                     break
                 self.invoke_queue.task_done()
