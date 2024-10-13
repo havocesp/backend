@@ -1,7 +1,7 @@
 import asyncio
 import websockets
 import json
-import requests
+from security import safe_requests
 
 
 ws_url = 'wss://api.hitbtc.com/api/2/ws'
@@ -16,7 +16,7 @@ class HitBtc:
         self.tickers = [i['id'] for i in self.get_ticks()]
 
     def get_ticks(self):
-        r = requests.get('{}{}'.format(rs_url,'symbol'))
+        r = safe_requests.get('{}{}'.format(rs_url,'symbol'))
         return r.json()
 
     def raw_msg(self, method='', symbol=''):
