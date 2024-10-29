@@ -16,7 +16,7 @@ class HitBtc:
         self.tickers = [i['id'] for i in self.get_ticks()]
 
     def get_ticks(self):
-        r = requests.get('{}{}'.format(rs_url,'symbol'))
+        r = requests.get('{}{}'.format(rs_url,'symbol'), timeout=60)
         return r.json()
 
     def raw_msg(self, method='', symbol=''):

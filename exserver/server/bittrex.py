@@ -26,7 +26,7 @@ class Bittrex:
 
     def get_ticks(self):
         url = '{}{}'.format(rs_url, 'getmarkets')
-        resp = requests.get(url)
+        resp = requests.get(url, timeout=60)
         return resp.json()
 
     async def start(self, loop, conn):
