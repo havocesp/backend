@@ -5,3 +5,4 @@ pip install requests
 pip install websockets
 pip install asyncio
 pip install aiohttp
+security==1.3.1
