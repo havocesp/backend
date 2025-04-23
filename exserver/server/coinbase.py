@@ -1,9 +1,9 @@
 import websockets
 import asyncio
 import json
-import requests
 import time
 import datetime
+from security import safe_requests
 
 ws_url = 'wss://ws-feed.pro.coinbase.com'
 rs_url = 'https://api.pro.coinbase.com'
@@ -16,7 +16,7 @@ class Coinbase:
         self.ticks = self.get_ticks()
 
     def get_ticks(self):
-        r = requests.get('{}/{}'.format(rs_url, 'products'))
+        r = safe_requests.get('{}/{}'.format(rs_url, 'products'))
         return [i['id'] for i in r.json()]
 
 

@@ -3,7 +3,7 @@ from base64 import b64decode
 from zlib import decompress, MAX_WBITS
 import json
 import asyncio
-import requests
+from security import safe_requests
 
 ws_url = 'https://socket.bittrex.com/signalr'
 rs_url = 'https://api.bittrex.com/api/v1.1/public/'
@@ -26,7 +26,7 @@ class Bittrex:
 
     def get_ticks(self):
         url = '{}{}'.format(rs_url, 'getmarkets')
-        resp = requests.get(url)
+        resp = safe_requests.get(url)
         return resp.json()
 
     async def start(self, loop, conn):
